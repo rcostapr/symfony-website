@@ -13,7 +13,6 @@ class HomeController
      */
     public function index()
     {
-
         $navigation = [
             1 => [
                 "href" => "/",
