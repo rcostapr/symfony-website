@@ -13,7 +13,7 @@ class Twig
     /**
      * New Instance
      */
-    public static function new()
+    public static function New()
     {
         $loader = new FilesystemLoader('../src/views');
         $twig = new \Twig\Environment($loader, [
@@ -24,7 +24,7 @@ class Twig
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = self::new();
+            self::$instance = self::New();
         }
         return self::$instance;
     }
