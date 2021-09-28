@@ -25,13 +25,9 @@
 
 
     <!-- Default styles for this template-->
-    <link href="/css/portugalevents-admin.min.css" rel="stylesheet" />
-    <link href="/css/bootstrap-extended.css" rel="stylesheet" />
 
 
     <!-- Custom styles for this template-->
-    <link href="/css/admin.css" rel="stylesheet" />
-    <link href="/css/app-email.css" rel="stylesheet" />
     @if (isset($customCss))
     @if (is_array($customCss))
     @foreach ($customCss as $css)
@@ -44,22 +40,18 @@
 </head>
 
 <body class="animated" id="page-top">
-    <!-- Brand Mobiles -->
-    @include('partials.brandmobile')
+    
     <!-- End of Brand Mobiles -->
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
-        @include('partials.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-                <!-- Topbar -->
-                @include('partials.topbar')
+
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -71,7 +63,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('partials.footer')
+
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
@@ -95,10 +87,8 @@
     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/js/portugalevents.admin.min.js"></script>
 
     <!-- CK Editor -->
-    <script src="/js/components/ckeditor/ckeditor.js"></script>
 
     <!-- Page level plugins -->
     <script src="/vendor/toastr/toastr.min.js"></script>
@@ -108,21 +98,28 @@
     <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="/vendor/dropzone/dropzone.min.js"></script>
-    <script src="/js/components/highlight/highlight.min.js"></script>
     <script src="/vendor/quill/quill.min.js"></script>
     <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/vendor/katex/katex.min.js"></script>
     <script src="/vendor/apex/apexcharts.min.js"></script>
 
+    @if (isset($customScript))
+        
     @if (is_array($customScript))
+
     @foreach ($customScript as $script)
+
     <script src="{{ $script }}"></script>
+
     @endforeach
     @else
+
     <script src="{{ $customScript }}"></script>
+    
     @endif
-    <script src="/js/admin/alerts/alert.js"></script>
-    <script src="/js/admin/messages/message.js"></script>
+
+    @endif
+    
 </body>
 
 </html>
