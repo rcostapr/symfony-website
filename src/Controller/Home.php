@@ -40,38 +40,4 @@ class Home
         $response = new Response($html);
         return $response;
     }
-
-    /**
-     * @Route("/artigos")
-     */
-    public function artigos()
-    {
-
-        $navigation = [
-            1 => [
-                "href" => "/",
-                "caption" => "Home",
-            ],
-            2 => [
-                "href" => "/produtos",
-                "caption" => "Produtos",
-            ],
-            3 => [
-                "href" => "/artigos",
-                "caption" => "Artigos",
-            ],
-
-        ];
-        $twig = Twig::getInstance();
-        $html = $twig->render(
-            "default.html.twig",
-            [
-                "page" => "Artigos",
-                "a_variable" => var_dump($twig),
-                "navigation" => $navigation,
-            ]
-        );
-        $response = new Response($html);
-        return $response;
-    }
 }

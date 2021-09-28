@@ -8,4 +8,5 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-/cache
+/cache/
+/node_modules/
