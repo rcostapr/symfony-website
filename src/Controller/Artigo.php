@@ -123,7 +123,7 @@ class Artigo
 
         ];
 
-        $scripts = ["/js/library.js", "/js/artigo.js"];
+        $scripts = ["/js/artigo.js"];
         $metatitle = "Artigo :: App Store Commerce";
         $metadescr = "Gestão de Artigos";
         $blade = Blade::getInstance();
