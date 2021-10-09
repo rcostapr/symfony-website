@@ -3,6 +3,7 @@ Base template for build website
 ## Menu
   - [🧐 Features](#-features-on-base-template-)
   - [🛠️ Installation](#️-installation-steps-)
+    -[Javascript Dependencies](#javascript-dependencies) 
   - [🚀 Run the app](#-start-template---Run-the-app-)
 
 ## 🧐 Features on Base Template [🔝](#symfony-website-template)
