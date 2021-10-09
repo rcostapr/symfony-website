@@ -9,7 +9,22 @@ Base template for build website
 - Dropzone
 - Select2
 
+## Instalation
+### PHP Dependencies
+```
+$ composer install
+```
+
+### Javascript Dependencies
+```
+$ yarn install
+```
+
 ## Start Template
 ```
 $ gulp watch
+```
+OR
+```
+$ npm start
 ```
