@@ -11,3 +11,6 @@
 .vscode/
 /cache/
 /node_modules/
+
+## Yarn
+yarn.lock
