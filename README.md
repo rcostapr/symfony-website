@@ -9,7 +9,7 @@ Base template for build website
 - Dropzone
 - Select2
 
-## Instalation
+## Installation
 ### PHP Dependencies
 ```
 $ composer install
