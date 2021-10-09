@@ -106,69 +106,6 @@ function clearOptions(element) {
   });
 }
 
-function getPlaceHolders(formid) {
-  let btn = $(".btn-sync");
-  params = {
-    menu: "form",
-    module: "form",
-    type: "placeholders",
-    formid: formid,
-  };
-  sendRequest(btn, params, function (data) {
-    $.each(data.formfields, function (fieldid, value) {
-      element = $("#" + fieldid);
-      element.attr("placeholder", value);
-    });
-  });
-}
-
-function sendRequest(btn, params, callback = null) {
-  btn.addClass("btn-spin");
-  $.ajax({
-    type: "POST",
-    url: "/admin/update",
-    data: params,
-    dataType: "json",
-    success: function (data) {
-      btn.removeClass("btn-spin");
-      if (data.error) {
-        toastr.warning(data.error, "Aviso:");
-        return false;
-      }
-
-      if (data.session) {
-        toastr.error(data.session, "Sessão Expirou:");
-        setTimeout(function () {
-          location.replace("/");
-        }, 2000);
-        return false;
-      }
-
-      if (data.success === true) {
-        if (callback) {
-          callback(data);
-        }
-      }
-
-      if (data.success === false) {
-        toastr.error(data.info, "Aviso:", {
-          onHidden: function () {
-            if (data.location) {
-              window.location.replace(data.location);
-            }
-          },
-          timeOut: 800,
-        });
-      }
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      btn.removeClass("btn-spin");
-      let info = xhr.status + "<br>" + thrownError;
-      toastr.error(info, "Aviso:");
-    },
-  });
-}
-
 function sendRequestTo(url, btn, params, callback = null) {
   btn.addClass("btn-spin");
   $.ajax({
@@ -216,46 +153,6 @@ function sendRequestTo(url, btn, params, callback = null) {
   });
 }
 
-function sendForm(formData, callback = null) {
-  $.ajax({
-    method: "POST",
-    type: "POST",
-    url: "/admin/update",
-    data: formData,
-    enctype: "multipart/form-data",
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function (data) {
-      $(".btn-spin").removeClass("btn-spin");
-      if (data.error) {
-        console.log(data);
-        toastr.warning(data.error, "Aviso:");
-        return false;
-      }
-
-      if (data.session) {
-        toastr.error(data.session, "Sessão Expirou:");
-        setTimeout(function () {
-          window.location("/");
-        }, 2000);
-        return false;
-      }
-
-      if (data.success === true) {
-        if (callback) {
-          callback(data);
-        }
-      }
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      $(".btn-spin").removeClass("btn-spin");
-      toastr.error(thrownError, "Error: " + xhr.status);
-    },
-  });
-}
-
 function sendFormTo(url, formData, callback = null) {
   $.ajax({
     method: "POST",
@@ -296,71 +193,6 @@ function sendFormTo(url, formData, callback = null) {
   });
 }
 
-function makeRequest(url, btn, params, callback = null) {
-  btn.addClass("btn-spin");
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: params,
-    dataType: "json",
-    success: function (data) {
-      btn.removeClass("btn-spin");
-      if (data.error) {
-        toastr.warning(data.error, "Aviso:");
-        return false;
-      }
-
-      if (data.session) {
-        toastr.error(data.session, "Sessão Expirou:");
-        setTimeout(function () {
-          location.replace("/");
-        }, 2000);
-        return false;
-      }
-
-      if (data.success === true) {
-        if (callback) {
-          callback(data);
-        }
-      }
-
-      if (data.success === false) {
-        toastr.error(data.info, "Aviso:", {
-          onHidden: function () {
-            if (data.location) {
-              window.location.replace(data.location);
-            }
-          },
-          timeOut: 800,
-        });
-      }
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-      btn.removeClass("btn-spin");
-      let info = thrownError;
-      toastr.error(info, "Error: " + xhr.status);
-    },
-  });
-}
-
-function copyToClipboard(element) {
-  let target = element.data("target");
-  let inputelement = document.getElementById(target);
-  inputelement.focus();
-  inputelement.select();
-  try {
-    var successful = document.execCommand("copy");
-    if (successful) {
-      $("#" + target).addClass("copied");
-      setTimeout(function () {
-        $("#" + target).removeClass("copied");
-        inputelement.blur();
-      }, 600);
-    }
-  } catch (err) {
-    console.log("Oops, unable to copy");
-  }
-}
 function getDataTableOptions() {
   return {
     dom: "lBfrtip",

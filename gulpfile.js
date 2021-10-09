@@ -13,6 +13,8 @@ const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
+const concat = require('gulp-concat');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Load package.json for banner
 const pkg = require("./package.json");
@@ -20,7 +22,7 @@ const pkg = require("./package.json");
 // Set the banner content
 const banner = [
     "/*!\n",
-    " * Portugal Events - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n",
+    " * Symfony Website Base Template - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n",
     " * Copyright 2020-" + new Date().getFullYear(),
     " <%= pkg.author %>\n",
     " * Licensed under <%= pkg.license %> (https://github.com/rcostapr/<%= pkg.name %>/blob/master/LICENSE)\n",

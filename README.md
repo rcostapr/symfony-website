@@ -10,10 +10,12 @@ Base template for build website
 ## 🧐 Features on Base Template [🔝](#symfony-website-template)
 - jQuery
 - Bootstrap
+- Fontawesome
 - Toastr
 - Sweet Alert
 - Dropzone
 - Select2
+- Datatables
 
 ## 🛠️ Installation Steps [🔝](#symfony-website-template)
 

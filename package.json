@@ -18,10 +18,10 @@
     "symfony",
     "website"
   ],
-  "homepage": "https://cpanel.myfeup.com",
+  "homepage": "https://website.myfeup.com",
   "bugs": {
-    "url": "https://gitlab.com/rcostapr/admin-dashboard-2022/issues",
-    "email": "admin@costapt.net"
+    "url": "https://github.com/rcostapr/symfony-website/issues",
+    "email": "ruicosta.pr@gmail.com"
   },
   "license": "MIT",
   "author": "costapt",
@@ -46,7 +46,9 @@
     "dropzone": "^5.7.2",
     "express": "^4.17.1",
     "express-static": "^1.2.6",
+    "gulp-concat": "^2.6.1",
     "gulp-connect-php": "^1.0.3",
+    "gulp-sourcemaps": "^3.0.0",
     "jquery": "^3.5.0",
     "jquery-ui-dist": "^1.12.1",
     "jquery.easing": "^1.4.1",
