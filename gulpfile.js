@@ -71,7 +71,7 @@ function phpServer(done) {
 
 // Clean vendor
 function clean() {
-    return del(["./public/vendor/"]);
+    return del(["./public/js/vendor/"]);
 }
 
 // Bring third party dependencies from node_modules into vendor directory
@@ -79,115 +79,98 @@ function modules() {
     // Bootstrap JS
     var bootstrapJS = gulp
         .src("./node_modules/bootstrap/dist/js/*")
-        .pipe(gulp.dest("./public/vendor/bootstrap/js"));
+        .pipe(gulp.dest("./js/bootstrap"));
     // Bootstrap SCSS
     var bootstrapSCSS = gulp
         .src("./node_modules/bootstrap/scss/**/*")
-        .pipe(gulp.dest("./public/vendor/bootstrap/scss"));
+        .pipe(gulp.dest("./scss/bootstrap"));
 
     // ChartJS
     var chartJS = gulp
         .src("./node_modules/chart.js/dist/*.js")
-        .pipe(gulp.dest("./public/vendor/chart.js"));
+        .pipe(gulp.dest("./js/chartjs/chart.js"));
 
     // Toastr
     var toastr = gulp
         .src("./node_modules/toastr/build/*.js")
-        .pipe(gulp.dest("./public/vendor/toastr"));
+        .pipe(gulp.dest("./js/toastr"));
     // Toastr SCSS
     var toastrSCSS = gulp
-        .src("./node_modules/toastr/toastr.scss")
-        .pipe(gulp.dest("./public/vendor/toastr/scss"));
+        .src("./node_modules/toastr/*.scss")
+        .pipe(gulp.dest("./scss/toastr"));
 
     // Sweetalert2
     var sweetalert2 = gulp
         .src("./node_modules/sweetalert2/dist/*.js")
-        .pipe(gulp.dest("./public/vendor/sweetalert2"));
+        .pipe(gulp.dest("./js/sweetalert2"));
     // Sweetalert SCSS
     var sweetalertSCSS = gulp
         .src("./node_modules/sweetalert2/src/*.scss")
-        .pipe(gulp.dest("./public/vendor/sweetalert2/scss"));
+        .pipe(gulp.dest("./scss/sweetalert2"));
     // Sweetalert2 SCSS
     var sweetalert2SCSS = gulp
         .src("./node_modules/sweetalert2/src/scss/*")
-        .pipe(gulp.dest("./public/vendor/sweetalert2/scss/scss"));
+        .pipe(gulp.dest("./scss/sweetalert2/scss"));
 
     // Select2
     var select2 = gulp
         .src("./node_modules/select2/dist/js/*.js")
-        .pipe(gulp.dest("./public/vendor/select2"));
+        .pipe(gulp.dest("./js/select2/select2"));
     // Select2 SCSS
     var select2SCSS = gulp
         .src("./node_modules/select2/src/scss/**/*")
-        .pipe(gulp.dest("./public/vendor/select2/scss/scss"));
+        .pipe(gulp.dest("./scss/select2/scss"));
     // Select2 css
     var select2CSS = gulp
         .src(
             "./node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css"
         )
-        .pipe(gulp.dest("./public/vendor/select2/css"));
-
-    // Quill
-    var quill = gulp
-        .src("./node_modules/quill/dist/*")
-        .pipe(gulp.dest("./public/vendor/quill"));
+        .pipe(gulp.dest("./css/select2"));
 
     // Perfect Scrollbar
     var perfectScrollbarCSS = gulp
         .src("./node_modules/perfect-scrollbar/css/perfect-scrollbar.css")
-        .pipe(gulp.dest("./public/vendor/perfect-scrollbar"));
+        .pipe(gulp.dest("./css/perfectScrollbar"));
     var perfectScrollbar = gulp
         .src("./node_modules/perfect-scrollbar/dist/*")
-        .pipe(gulp.dest("./public/vendor/perfect-scrollbar"));
-
-    // Katex
-    var katex = gulp
-        .src("./node_modules/katex/dist/**/*")
-        .pipe(gulp.dest("./public/vendor/katex"));
+        .pipe(gulp.dest("./js/perfect-scrollbar"));
 
     // DROPZONE
     var dropzoneCSS = gulp
         .src("./node_modules/dropzone/dist/min/dropzone.min.css")
-        .pipe(gulp.dest("./public/vendor/dropzone"));
+        .pipe(gulp.dest("./css/dropzone"));
 
     var dropzone = gulp
         .src("./node_modules/dropzone/dist/min/dropzone.min.js")
-        .pipe(gulp.dest("./public/vendor/dropzone"));
-
-    // APEX
-    var apexCSS = gulp
-        .src("./node_modules/apexcharts/dist/apexcharts.css")
-        .pipe(gulp.dest("./public/vendor/apex"));
-
-    var apex = gulp
-        .src("./node_modules/apexcharts/dist/apexcharts.min.js")
-        .pipe(gulp.dest("./public/vendor/apex"));
+        .pipe(gulp.dest("./js/dropzone"));
 
     // dataTables
     var dataTables = gulp
         .src([
             "./node_modules/datatables.net/js/*.js",
             "./node_modules/datatables.net-bs4/js/*.js",
+        ])
+        .pipe(gulp.dest("./js/datatables"));
+
+    // dataTables CSS
+    var dataTablesCss = gulp
+        .src([
             "./node_modules/datatables.net-bs4/css/*.css",
         ])
-        .pipe(gulp.dest("./public/vendor/datatables"));
+        .pipe(gulp.dest("./css/datatables"));
 
     // Font Awesome
     var fontAwesome = gulp
         .src("./node_modules/@fortawesome/**/*")
-        .pipe(gulp.dest("./public/vendor"));
+        .pipe(gulp.dest("./css/fortawesome"));
 
-    // jQuery Easing
-    var jqueryEasing = gulp
-        .src("./node_modules/jquery.easing/*.js")
-        .pipe(gulp.dest("./public/vendor/jquery-easing"));
     // jQuery
     var jquery = gulp
         .src([
             "./node_modules/jquery/dist/*",
             "!./node_modules/jquery/dist/core.js",
         ])
-        .pipe(gulp.dest("./public/vendor/jquery"));
+        .pipe(gulp.dest("./js/jquery"));
 
     // jQuery UI
     var jqueryui = gulp
@@ -196,20 +179,21 @@ function modules() {
             "./node_modules/jquery-ui-dist/jquery-ui.min.css",
             "./node_modules/jquery-ui-dist/jquery-ui.theme.min.css",
         ])
-        .pipe(gulp.dest("./public/vendor/jqueryui"));
+        .pipe(gulp.dest("./js/jqueryui"));
+
     var jqueryuimage = gulp
         .src(["./node_modules/jquery-ui-dist/images/*"])
-        .pipe(gulp.dest("./public/vendor/jqueryui/images"));
+        .pipe(gulp.dest("./public/js/vendor/images"));
     return merge(
         bootstrapJS,
         bootstrapSCSS,
         chartJS,
         dataTables,
+        dataTablesCss,
         fontAwesome,
         jquery,
         jqueryui,
         jqueryuimage,
-        jqueryEasing,
         toastr,
         toastrSCSS,
         sweetalert2,
@@ -220,17 +204,13 @@ function modules() {
         select2CSS,
         dropzone,
         dropzoneCSS,
-        apex,
-        apexCSS,
-        quill,
         perfectScrollbarCSS,
         perfectScrollbar,
-        katex
     );
 }
 
-// CSS task
-function css() {
+// SCSS task
+function scss() {
     return gulp
         .src("./scss/**/*.scss")
         .pipe(plumber())
@@ -251,21 +231,21 @@ function css() {
                 pkg: pkg,
             })
         )
-        .pipe(gulp.dest("./public/css"))
+        .pipe(gulp.dest("./css"))
         .pipe(
             rename({
                 suffix: ".min",
             })
         )
         .pipe(cleanCSS())
-        .pipe(gulp.dest("./public/css"))
+        .pipe(gulp.dest("./css"))
         .pipe(browsersync.stream());
 }
 
 // JS task
 function js() {
     return gulp
-        .src(["./public/js/*.js", "!./public/js/*.min.js"])
+        .src(["./js/library.js"])
         .pipe(uglify())
         .pipe(
             header(banner, {
@@ -281,25 +261,40 @@ function js() {
         .pipe(browsersync.stream());
 }
 
+// CSS concat task
+function css() {
+    return gulp
+        .src([
+            "./css/bootstrap/bootstrap.min.css",
+            "./css/fortawesome/fontawesome-free/css/all.min.css",
+
+        ])
+        .pipe(sourcemaps.init())
+        .pipe(concat('blundle.css'))
+        .pipe(
+            rename({
+                suffix: ".min",
+            })
+        )
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./public/js/vendor/'))
+        .pipe(browsersync.stream());
+}
+
 // Watch files
 function watchFiles() {
     gulp.watch("./scss/**/*", gulp.series("css"));
-    gulp.watch(
-        ["./public/js/**/*", "!./public/js/**/*.min.js"],
-        gulp.series("js")
-    );
-    gulp.watch("./**/public/**/*.php", browserSyncReload);
+    gulp.watch(["./js/**/*"], gulp.series("js"));
+    gulp.watch("./src/**/*", browserSyncReload);
 }
 
 // Define complex tasks
 const vendor = gulp.series(clean, modules);
-const build = gulp.series(vendor, gulp.parallel(css, js));
-const watch = gulp.series(
-    build,
-    gulp.parallel(watchFiles, phpServer, browserSync)
-);
+const build = gulp.series(vendor, gulp.parallel(scss, js, css));
+const watch = gulp.series(build, gulp.parallel(watchFiles, phpServer, browserSync));
 
 // Export tasks
+exports.scss = scss;
 exports.css = css;
 exports.js = js;
 exports.clean = clean;

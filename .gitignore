@@ -17,3 +17,10 @@ yarn.lock
 symfony.lock
 composer.lock
 package-lock.json
+
+## Vendor
+/js/vendor
+/css/vendor
+/scss/vendor
+/public/js/vendor
+/public/css/vendor
