@@ -345,7 +345,7 @@ function vendorjs() {
 
 // Watch files
 function watchFiles() {
-    gulp.watch("./scss/*", gulp.series("scss"));
+    gulp.watch("./scss/*", gulp.series(gulp.parallel(scss, style)));
     gulp.watch(["./js/*"], gulp.series("js"));
     gulp.watch("./src/**/*", browserSyncReload);
 }
@@ -355,6 +355,7 @@ const vendor = gulp.series(clean, modules);
 const compile = gulp.series(gulp.parallel(scss, style));
 const build = gulp.series(vendor, compile, gulp.parallel(css, js, vendorjs));
 const watch = gulp.series(build, gulp.parallel(watchFiles, phpServer, browserSync));
+
 
 // Export tasks
 exports.scss = scss;
