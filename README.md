@@ -1,6 +1,6 @@
 # Symfony Website Template
 Base template for build website
-## Menu
+## Menu :smile: 
   - [🧐 Features](#-features-on-base-template-)
   - [🛠️ Installation](#️-installation-steps-)
     - [Javascript Dependencies](#javascript-dependencies) 
