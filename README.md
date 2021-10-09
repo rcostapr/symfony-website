@@ -1,18 +1,18 @@
 # Symfony Website Template
 Base template for build website
 ## Menu
-  - [🧐 Features](#-features-)
+  - [🧐 Features](#-features-on-base-template-)
   - [🛠️ Installation](#-installation-)
-  - [🚀 Run the app](#-startapp-)
+  - [🚀 Run the app](#-start-template---Run-the-app-)
 
-## 🧐 Features on Base Template[🔝](#features)
+## 🧐 Features on Base Template [🔝](#symfony-website-template)
 - jQuery
 - Bootstrap
 - Toastr
 - Sweet Alert
 - Dropzone
 - Select2
-## 🛠️ Installation[🔝](#installation)
+## 🛠️ Installation [🔝](#symfony-website-template)
 
 ### Clone the repository
 ```bash
@@ -32,7 +32,7 @@ $ composer install
 $ yarn install
 ```
 
-## 🚀 Start Template - Run the app[🔝](#startapp)
+## 🚀 Start Template - Run the app [🔝](#symfony-website-template)
 ```bash
 $ gulp watch
 ```
