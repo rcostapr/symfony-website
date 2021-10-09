@@ -12,6 +12,7 @@ Base template for build website
 - Sweet Alert
 - Dropzone
 - Select2
+
 ## 🛠️ Installation [🔝](#symfony-website-template)
 
 ### Clone the repository
