@@ -33,7 +33,7 @@ class Home
             "default.html.twig",
             [
                 "page" => "Home",
-                "a_variable" => var_dump($twig),
+                "a_variable" => "",
                 "navigation" => $navigation,
             ]
         );

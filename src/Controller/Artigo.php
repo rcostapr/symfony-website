@@ -36,7 +36,7 @@ class Artigo
             "default.html.twig",
             [
                 "page" => "Artigos",
-                "a_variable" => var_dump($request),
+                "a_variable" => "",
                 "navigation" => $navigation,
             ]
         );
@@ -50,8 +50,8 @@ class Artigo
     public function update(Request $request): Response
     {
         $routeName = $request->attributes->get('_route');
-        $routeParameters = $request->attributes->get('_route_params');
         // use this to get all the available attributes (not only routing ones):
+        $routeParameters = $request->attributes->get('_route_params');
         // {"_route":"app_artigo_update","_controller":"App\\Controller\\Artigo::update","_route_params":[]}
         $allAttributes = $request->attributes->all();
 

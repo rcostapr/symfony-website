@@ -35,7 +35,7 @@ class Produto
             "default",
             [
                 "page" => "Produtos",
-                "a_variable" => var_dump($blade),
+                "a_variable" => "",
                 "navigation" => $navigation,
             ]
         );
