@@ -16,3 +16,4 @@
 yarn.lock
 symfony.lock
 composer.lock
+package-lock.json
