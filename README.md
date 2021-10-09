@@ -3,6 +3,7 @@ Base template for build website
 ## Menu :smile: 
   - [🧐 Features](#-features-on-base-template-)
   - [🛠️ Installation](#️-installation-steps-)
+    - [PHP Dependencies](#install-php-dependencies) 
     - [Javascript Dependencies](#javascript-dependencies) 
   - [🚀 Run the app](#-start-template---Run-the-app-)
 
