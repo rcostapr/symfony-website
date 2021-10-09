@@ -2,7 +2,7 @@
 Base template for build website
 ## Menu
   - [🧐 Features](#-features-on-base-template-)
-  - [🛠️ Installation](#-installation-)
+  - [🛠️ Installation](#-installation-steps-)
   - [🚀 Run the app](#-start-template---Run-the-app-)
 
 ## 🧐 Features on Base Template [🔝](#symfony-website-template)
@@ -13,7 +13,7 @@ Base template for build website
 - Dropzone
 - Select2
 
-## 🛠️ Installation [🔝](#symfony-website-template)
+## 🛠️ Installation Steps [🔝](#symfony-website-template)
 
 ### Clone the repository
 ```bash
