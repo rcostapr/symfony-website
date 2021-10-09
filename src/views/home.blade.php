@@ -4,7 +4,7 @@
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Website</h1>
+    <h1 class="h3 mb-0 text-gray-800">Home Page Website</h1>
 </div>
 
 <!-- Content container-fluid -->
@@ -27,12 +27,7 @@
                 </li>
                 @endforeach
             </ul>
-            <h1>{{ $page }}
-                - App Store Commerce</h1>
-            {{ $artigoid }}
-            <div>
-                <button id="sendRequest" type="button" class="btn btn-success" data-artigoid="{{ $artigoid }}">Send</button>
-            </div>
+            <h1>{{ $page }} - App Store Commerce</h1>
         </div>
     </div>
 </div>

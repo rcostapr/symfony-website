@@ -29,6 +29,14 @@ class Artigo
                 "href" => "/artigos",
                 "caption" => "Artigos",
             ],
+            4 => [
+                "href" => "/artigos/123",
+                "caption" => "Artigo 123",
+            ],
+            5 => [
+                "href" => "/artigos/456",
+                "caption" => "Artigo 456",
+            ],
 
         ];
         $twig = Twig::getInstance();
@@ -37,6 +45,19 @@ class Artigo
             [
                 "page" => "Artigos",
                 "a_variable" => "",
+                "navigation" => $navigation,
+            ]
+        );
+
+        $metatitle = "Article :: App Store Commerce";
+        $metadescr = "Article Page";
+        $blade = Blade::getInstance();
+        $html = $blade->render(
+            "home",
+            [
+                "metatitle" => $metatitle,
+                "metadescr" => $metadescr,
+                "page" => "Article Page",
                 "navigation" => $navigation,
             ]
         );

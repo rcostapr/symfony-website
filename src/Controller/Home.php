@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Blade\Blade;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Twig\Twig;
@@ -34,6 +35,18 @@ class Home
             [
                 "page" => "Home",
                 "a_variable" => "",
+                "navigation" => $navigation,
+            ]
+        );
+        $metatitle = "Home :: App Store Commerce";
+        $metadescr = "Home Page";
+        $blade = Blade::getInstance();
+        $html = $blade->render(
+            "home",
+            [
+                "metatitle" => $metatitle,
+                "metadescr" => $metadescr,
+                "page" => "Home Page",
                 "navigation" => $navigation,
             ]
         );

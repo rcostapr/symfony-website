@@ -39,6 +39,19 @@ class Produto
                 "navigation" => $navigation,
             ]
         );
+
+        $metatitle = "Product :: App Store Commerce";
+        $metadescr = "Product Page";
+        $blade = Blade::getInstance();
+        $html = $blade->render(
+            "home",
+            [
+                "metatitle" => $metatitle,
+                "metadescr" => $metadescr,
+                "page" => "Product Page",
+                "navigation" => $navigation,
+            ]
+        );
         $response = new Response($html);
         return $response;
     }
