@@ -12,5 +12,6 @@
 /cache/
 /node_modules/
 
-## Yarn
+## Lock
 yarn.lock
+symfony.lock
