@@ -7,8 +7,6 @@
 namespace App\Db;
 
 use App\Db\Db;
-use PDOException;
-use Exception;
 
 /**
  * Make query on Database
@@ -56,13 +54,28 @@ class Query extends Db
      *
      * @param   string    $query Query string to execute
      * @param   array     $props Array with values to use with query string
+     * @param   array     $param Array with Connection parameters \
+     * string $dbname, string $user, string $pass, string $host default '127.0.0.1', int $port default 3306, $driver default 'mysql' \
+     * $param = [ \
+     *  "dbname" => "", \
+     *  "user" => "", \
+     *  "pass" => "", \
+     *  "host" => "", \
+     *  "port" => "", \
+     *  "driver" => "", \
+     * ];
      *
      * @return  void
      *
      */
-    public function __construct(String $query, array $props = null)
+    public function __construct(String $query, array $props = null, array $param = null)
     {
-        $this->conn = Db::getInstance();
+        if (isset($param)) {
+            $this->conn = Db::getInstance($param);
+        } else {
+            $this->conn = Db::getInstance();
+        }
+
 
         $this->state = $this->conn->getConnectionState();
         $this->error = $this->conn->getConnectionError();
@@ -82,13 +95,14 @@ class Query extends Db
     }
 
     /**
-     * Execute MySql query
+     * Execute query on Database
      *
      * @return void
      */
     private function execQuery(): void
     {
         try {
+
             $this->stmt = $this->db->prepare($this->query);
             if (!empty($this->props)) {
                 $this->state = $this->stmt->execute($this->props);

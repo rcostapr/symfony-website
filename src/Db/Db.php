@@ -7,7 +7,7 @@
 namespace App\Db;
 
 use PDO;
-use app\Config\Config;
+use App\Config\Config;
 
 /**
  * Class represent a connection to database
@@ -38,17 +38,18 @@ class Db
     private static $instance = null;
 
     /**
-     * Initialize MySQL database connection.
+     * Initialize Database Connection.
      *
-     * @param $host         Host name for database connection
-     * @param $port         Port on the host for database connetion
-     * @param $dbname       Name of the database on MySql server
-     * @param $username     Username to perform the connectio
-     * @param $password     Password used to make connections
+     * @param string $dbname       Name of the database on MySql server
+     * @param string $username     Username to perform the connectio
+     * @param string $password     Password used to make connections
+     * @param string $host         Host name for database connection
+     * @param string $port         Port on the host for database connetion
+     * @param string $driver       Drive to use
      *
      * @return void
      */
-    public function __construct(string $host = null, int $port = null, string $dbname = null, string $username = null, string $password = null)
+    public function __construct(string $dbname = null, string $username = null, string $password = null, string $host = '127.0.0.1', int $port = 3306, $driver = 'mysql')
     {
         $options = [
             PDO::ATTR_EMULATE_PREPARES => false,
@@ -57,23 +58,45 @@ class Db
             PDO::MYSQL_ATTR_FOUND_ROWS => true,
         ];
 
-        if (empty($host) || empty($port) || empty($dbname) || empty($username) || empty($password)) {
-            $param = Config::get();
+        if (empty($dbname) || empty($username) || empty($password)) {
+            try {
+                $param = Config::get("DATABASE");
+            } catch (\Throwable $th) {
+                $this->error = $th->getMessage();
+                $this->errorCode = $th->getCode();
+            }
+
             if (!is_array($param)) {
                 $this->error = "Config File Not Found";
             } else {
-                $param = $param["DATABASE"];
-                $host = $param["host"];
-                $port = $param["port"];
+
+                if (isset($param["host"])) {
+                    $host = $param["host"];
+                }
+
+                if (isset($param["port"])) {
+                    $port = $param["port"];
+                }
+
+                if (isset($param["driver"])) {
+                    $driver = $param["driver"];
+                }
+
                 $dbname = $param["dbname"];
                 $username = $param["user"];
                 $password = $param["pass"];
             }
         }
 
+        if (empty($dbname) || empty($username) || empty($password)) {
+            $this->error = "Connection parameters not set.";
+        }
+
+
         if (!$this->db && !empty($host) && !empty($port) && !empty($dbname) && !empty($username) && !empty($password)) {
             try {
-                $this->db = new PDO('mysql:host=' . $host . ';port=' . $port . ';dbname=' . $dbname . ';charset=UTF8', $username, $password, $options);
+                $dns = "$driver:host=$host;port=$port;dbname=$dbname;charset=UTF8";
+                $this->db = new PDO($dns, $username, $password, $options);
             } catch (\Throwable $e) {
                 $this->state = false;
                 $this->error = $e->getMessage();
@@ -82,8 +105,32 @@ class Db
         }
     }
 
-    public static function getInstance()
+    public static function getInstance($param = null)
     {
+        if (isset($param)) {
+            $host = '127.0.0.1';
+            if (isset($param["host"])) {
+                $host = $param["host"];
+            }
+            $port = 3306;
+            if (isset($param["port"])) {
+                $port = $param["port"];
+            }
+            $driver = 'mysql';
+            if (isset($param["driver"])) {
+                $driver = $param["driver"];
+            }
+            if (empty($param["dbname"]) || empty($param["user"]) || empty($param["pass"])) {
+                throw new \Exception("Connection parameters not set.", 1);
+            }
+
+            $dbname = $param["dbname"];
+            $username = $param["user"];
+            $password = $param["pass"];
+
+            return new Db($dbname, $username, $password, $host, $port, $driver);
+        }
+
         if (!self::$instance) {
             self::$instance = new Db();
         }
