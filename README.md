@@ -32,6 +32,11 @@ $ cd symfony-website
 $ composer install
 ```
 
+### Production Install
+```bash
+$ composer install --no-dev --optimize-autoloader
+$ APP_ENV=prod APP_DEBUG=0 php bin/console cache:clear
+```
 ### Javascript Dependencies
 ```bash
 $ yarn install
