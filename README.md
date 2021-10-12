@@ -37,6 +37,16 @@ $ composer install
 $ yarn install
 ```
 
+## APP Secret
+### Create or Regenerate App Secret
+```bash
+$ php bin/console regenerate-app-secret
+```
+### Generate Secret Keys
+```bash
+php bin/console secrets:generate-keys
+```
+
 ## 🚀 Start Template - Run the app [🔝](#symfony-website-template)
 ```bash
 $ gulp watch
