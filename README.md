@@ -62,3 +62,23 @@ $ npm start
 ```
 
 🌟 You are all set!
+
+
+## Email Sender
+
+- symfony/mailer  instructions:
+
+  * You're ready to send emails.
+
+  * If you want to send emails via a supported email provider, install
+    the corresponding bridge.
+    For instance, composer require mailgun-mailer for Mailgun.
+
+  * If you want to send emails asynchronously:
+
+    1. Install the messenger component by running composer require messenger;
+    2. Add 'Symfony\Component\Mailer\Messenger\SendEmailMessage': amqp to the
+       config/packages/messenger.yaml file under framework.messenger.routing
+       and replace amqp with your transport name of choice.
+
+  * Read the documentation at https://symfony.com/doc/master/mailer.html
